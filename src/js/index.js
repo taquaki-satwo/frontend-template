@@ -1,3 +1,5 @@
+import 'core-js';
+import 'regenerator-runtime/runtime';
 import { msg } from './modules/module';
 
 if (process.env.NODE_ENV === 'development') {
