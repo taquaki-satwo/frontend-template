@@ -437,7 +437,7 @@ body {
 ```
 
 ```bash
-npm i -D css-loader postcss-loader postcss-import postcss-custom-properties
+npm i -D css-loader style-loader postcss-loader postcss-import postcss-custom-properties
 touch postcss.config.js
 ```
 
@@ -469,6 +469,73 @@ module.exports = {
 import { msg } from './modules/module';
 +import '../css/style.css';
 ...
+```
+
+## 10. mini-css-extract-plugin
+
+```bash
+npm i -D mini-css-extract-plugin
+```
+
+```HTML:public/index.html
+  <title></title>
++ <link rel="stylesheet" href="./css/main.css">
+</head>
+```
+
+```JavaScript:webpack.common.js
+        }
+-     },
+-     {
+-       test: /\.css$/,
+-       use: [
+-         'style-loader',
+-         { loader: 'css-loader', options: { importLoaders: 1 } },
+-         'postcss-loader'
+-       ]
+      }
+```
+
+```JavaScript:webpack.dev.js
+  devtool: 'eval-source-map',
++ module: {
++   rules: [
++     {
++       test: /\.css$/,
++       use: [
++         'style-loader',
++         { loader: 'css-loader', options: { importLoaders: 1 } },
++         'postcss-loader',
++       ]
++     }
++   ]
++ },
+  devServer: {
+```
+
+```JavaScript:webpack.prod.js
+const common = require('./webpack.common');
++const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = merge(common, {
+- mode: 'production'
++ mode: 'production',
++ module: {
++   rules: [
++     {
++       test: /\.css$/,
++       use: [
++         MiniCssExtractPlugin.loader,
++         { loader: 'css-loader', options: { importLoaders: 1 } },
++         'postcss-loader',
++       ]
++     }
++   ]
++ },
++ plugins: [new MiniCssExtractPlugin({
++   filename: '../css/[name].css',
++ })]
+});
 ```
 
 ## Todo
