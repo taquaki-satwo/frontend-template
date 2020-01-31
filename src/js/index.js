@@ -1,4 +1,3 @@
-import 'core-js';
 import 'regenerator-runtime/runtime';
 import { msg } from './modules/module';
 import '../css/style.css';

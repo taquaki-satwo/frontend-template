@@ -341,7 +341,7 @@ module.exports = merge(common, {
      "test": "echo \"Error: no test specified\" && exit 1",
 -    "start": "webpack-dev-server --open",
 -    "build": "webpack"
-+    "start": "webpack-dev-server --open --config webpack.dev.js",
++    "start": "webpack-dev-server --inline --hot --open --config  webpack.dev.js",
 +    "build": "webpack --config webpack.prod.js"
    },
 ...
@@ -383,7 +383,6 @@ touch .babelrc
 ```
 
 ```JavaScript:src/js/index.js
-+import 'core-js';
 +import 'regenerator-runtime/runtime';
  import { msg } from './modules/module';
 ...
