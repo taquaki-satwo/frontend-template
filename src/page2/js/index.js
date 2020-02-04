@@ -1,9 +1,9 @@
 import 'regenerator-runtime/runtime';
 import { msg } from './modules/module';
-import '../css/style.css';
+import '../css/index.css';
 
 if (process.env.NODE_ENV === 'development') {
-  console.warn('開発環境');
+  console.warn('Development');
 }
 
-console.log(msg);
+console.log('TOP', msg);

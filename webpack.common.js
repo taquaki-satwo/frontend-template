@@ -1,10 +1,14 @@
 const path = require('path');
+require('dotenv').config();
+
+const entries = {};
+process.env.ENTRIES.split(',').map(entry => entries[entry.split(':')[0]] = entry.split(':')[1]);
 
 module.exports = {
-  entry: './src/js/index.js',
+  entry: entries,
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public/js')
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [

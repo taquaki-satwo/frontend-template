@@ -537,6 +537,13 @@ module.exports = merge(common, {
 });
 ```
 
+## 11. Multi Entries
+
+
+```bash
+npm i -D dotenv
+```
+
 ## Todo
 
 * html-webpack-plugin
@@ -548,4 +555,4 @@ module.exports = merge(common, {
 * Minify
 * Uglify
 * optimization－splitChunks
-* dotenv、cross-env、env-option
+* cross-env、env-option

@@ -1,0 +1,9 @@
+:root {
+  --color: red;
+}
+
+p {
+  color: red;
+  color: var(--color);
+}
+

@@ -1,0 +1,5 @@
+@import './components/component.css';
+
+p {
+  color: var(--color);
+}
